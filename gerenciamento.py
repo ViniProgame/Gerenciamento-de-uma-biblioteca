@@ -1,4 +1,53 @@
-#codigo de inicialização do programa, onde o programa é executado
+class Livro:
+  # Informações sobre o livro
+  def __init__(self, titulo, autor, ano):
+      self.titulo = titulo
+      self.autor = autor
+      self.ano = ano
+
+class Biblioteca:
+  def __init__(self):
+      self.livros = []
+
+  # Adiciona o livro à biblioteca
+  def adicionar_livro(self, livro):
+      self.livros.append(livro)
+      print("Livro adicionado com sucesso!")
+
+  # Remove o livro da biblioteca
+  def remover_livro(self, titulo):
+      for livro in self.livros:
+          if livro.titulo.lower() == titulo.lower():
+              self.livros.remove(livro)
+              print("Livro removido com sucesso!")
+              return
+      print("Livro não encontrado na biblioteca.")
+
+  # Pesquisa pelo título do livro
+  def pesquisar_por_titulo(self, titulo):
+      encontrados = [livro for livro in self.livros if livro.titulo.lower() == titulo.lower()]
+      if encontrados:
+          for livro in encontrados:
+              print(f"Título: {livro.titulo}, Autor: {livro.autor}, Ano: {livro.ano}")
+      else:
+          print("Nenhum livro encontrado com este título.")
+
+  # Pesquisa pelo autor do livro
+  def pesquisar_por_autor(self, autor):
+      encontrados = [livro for livro in self.livros if livro.autor.lower() == autor.lower()]
+      if encontrados:
+          for livro in encontrados:
+              print(f"Título: {livro.titulo}, Autor: {livro.autor}, Ano: {livro.ano}")
+      else:
+          print("Nenhum livro encontrado deste autor.")
+
+  # Mostra todos os livros registrados na biblioteca
+  def exibir_todos(self):
+      if self.livros:
+          for livro in self.livros:
+              print(f"Título: {livro.titulo}, Autor: {livro.autor}, Ano: {livro.ano}")
+      else:
+          print("A biblioteca está vazia.")
 
 def main():
   biblioteca = Biblioteca()
@@ -31,6 +80,7 @@ def main():
       elif escolha == '5':
           biblioteca.exibir_todos()
       elif escolha == '6':
+          print("Obrigado por usar o programa!")
           print("Saindo do programa...")
           break
       else:
@@ -38,58 +88,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-class Livro:
-    # informacoes sobre o livro
-  def __init__(self, titulo, autor, ano):
-      self.titulo = titulo
-      self.autor = autor
-      self.ano = ano
-    # onde é salvo
-class Biblioteca:
-  def __init__(self):
-      self.livros = []
-    # o livro é adicionado na biblioteca
-  def adicionar_livro(self, livro):
-      self.livros.append(livro)
-      print("Livro adicionado com sucesso!")
-    # o livro é removido da biblioteca
-  def remover_livro(self, titulo):
-      for livro in self.livros:
-          if livro.titulo == titulo:
-              self.livros.remove(livro)
-              print("Livro removido com sucesso!")
-              return
-      print("Livro não encontrado na biblioteca.")
-      
-    # pesquisa pelo titulo do livro
-    
-  def pesquisar_por_titulo(self, titulo):
-      encontrados = [livro for livro in self.livros if livro.titulo.lower() == titulo.lower()]
-      if encontrados:
-          for livro in encontrados:
-              print(f"Título: {livro.titulo}, Autor: {livro.autor}, Ano: {livro.ano}")
-      else:
-          print("Nenhum livro encontrado com este título.")
-          
-    # pesquisa pelo autor do livro
-    
-  def pesquisar_por_autor(self, autor):
-      encontrados = [livro for livro in self.livros if livro.autor.lower() == autor.lower()]
-      if encontrados:
-          for livro in encontrados:
-              print(f"Título: {livro.titulo}, Autor: {livro.autor}, Ano: {livro.ano}")
-      else:
-          print("Nenhum livro encontrado deste autor.")
-
-    # mostra todos os livros registrados na biblioteca
-    
-  def exibir_todos(self):
-      if self.livros:
-          for livro in self.livros:
-              print(f"Título: {livro.titulo}, Autor: {livro.autor}, Ano: {livro.ano}")
-      else:
-          print("A biblioteca está vazia.")
-
-
-
-
